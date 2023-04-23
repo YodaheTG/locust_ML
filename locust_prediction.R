@@ -128,13 +128,13 @@ bv
 #change surface to raster data and store in computer
 bird_datab = subset(bird_data, !is.na(bird_data$individualCount))
 r <- raster(aoi_boundary_HARV)
-bv = rasterize(bird_datab[21:20], r,field = bird_datab[12], crs= "+proj=longlat +datum=WGS84")
+bird_data_raster = rasterize(bird_datab[21:20], r,field = bird_datab[12], crs= "+proj=longlat +datum=WGS84")
 
 bird_datab[21:20]
 
 bird_datab[12]
 
-writeRaster(bv, filename= 'tiff',format="GTiff", overwrite=TRUE)
+writeRaster(bird_data_raster, filename= 'tiff',format="GTiff", overwrite=TRUE)
 
 
 year = c(2013,2014,2015,2016,2017)
@@ -183,7 +183,7 @@ for (i in 1:5){
 # create empty dataframe
 j = data.frame()
 
-rastlist <- list.files(path = "C:/Users/JehoidaGM/Documents/dissertation/1985_2019 DL complete", pattern='.tif$', all.files=TRUE, full.names=FALSE)
+rastlist <- list.files(path = ".....1985_2019 DL complete", pattern='.tif$', all.files=TRUE, full.names=FALSE)
 rastlist
 
 # store every data that extracted from google earth engine in a data frame (see the other documentation)
@@ -286,6 +286,7 @@ dfb = function (a,b){
 # build data
 neww = read.csv('twokmb.csv')
 nrow(neww)
+#This is excel data created by extracting soil moisutre data from NASA SAR data 
 sixthday_max = df(read_excel("16_day_max.xls"), read_excel("16_day_max_pa.xls"))
 sixthday_mean = df(read_excel("16_day_mean.xls"), read_excel("16_day_mean_pa.xls"))
 sixthday_min = df(read_excel("16_day_min.xls"), read_excel("16_day_min_pa.xls"))
